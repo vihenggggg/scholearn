@@ -1,0 +1,65 @@
+[
+  {
+    "id": "moeys_scholarship",
+    "name_km": "កម្មវិធីអាហារូបករណ៍ថ្នាក់សញ្ជាតិ ក្រសួងអប់រំ យុវជន និងកីឡា",
+    "name_en": "MoEYS National Undergraduate Scholarship Program",
+    "org": "Ministry of Education, Youth and Sport (MoEYS)",
+    "tags": ["national_general", "all_fields"],
+    "url": "https://www.moeys.gov.kh",
+    "note": "The Ministry announces thousands of full undergraduate scholarships every year (8,619 were announced for 2023-24). Check the Ministry's site or your school each year for the current announcement, eligibility, and deadline — the program changes annually so verify before relying on it."
+  },
+  {
+    "id": "asia_foundation_girls",
+    "name_km": "កម្មវិធីអាហារូបករណ៍ថ្នាក់ឧត្តមសិក្សា សម្រាប់សិស្សស្រី",
+    "name_en": "Cambodia Tertiary Scholarship Program (for young women)",
+    "org": "The Asia Foundation, in partnership with KAPE",
+    "tags": ["women_rural", "all_fields", "health_focused", "education_focused", "social_focused"],
+    "url": "https://asiafoundation.org/scholarships-for-girls-education-in-cambodia/",
+    "note": "Supports female students from vulnerable families (historically focused on Kampong Cham province) with financial support, mentoring, English/computer skills, and career development training."
+  },
+  {
+    "id": "kas_adenauer",
+    "name_km": "កម្មវិធីអាហារូបករណ៍ Adenauer Young Scholars for Excellence",
+    "name_en": "Adenauer Young Scholars for Excellence",
+    "org": "Konrad-Adenauer-Stiftung (KAS) Cambodia",
+    "tags": ["german_partner", "all_fields", "business_focused", "engineering_focused", "law_social_focused"],
+    "url": "https://www.kas.de/en/web/kambodscha/static-contents-detail/-/content/scholarship-programs-from-kas-cambodia",
+    "note": "Financial and academic support for Bachelor's and Master's students with a GPA of 3.0 or higher. Apply with a two-page CV, a motivation letter (max 700 words), and academic transcript, typically due by 30 June."
+  },
+  {
+    "id": "australia_awards",
+    "name_km": "អាហារូបករណ៍ Australia Awards",
+    "name_en": "Australia Awards Scholarships",
+    "org": "Australian Government (DFAT)",
+    "tags": ["postgraduate_abroad"],
+    "url": "https://www.dfat.gov.au/sites/default/files/australia-awards-cambodia-information-for-intake.docx",
+    "note": "For Master's/PhD study in Australia, aimed at future leaders who can address development challenges in Cambodia. This is a postgraduate program — most useful for students to know about now and plan toward after their first degree. Search 'Australia Awards Cambodia' for the current intake portal, since program pages change yearly."
+  },
+  {
+    "id": "mlvt_tvet_free",
+    "name_km": "ការបណ្តុះបណ្តាលបច្ចេកទេស និងវិជ្ជាជីវៈដោយឥតគិតថ្លៃ សម្រាប់យុវជនក្រីក្រ",
+    "name_en": "Free TVET Training for Poor & Vulnerable Youth",
+    "org": "Ministry of Labour and Vocational Training (MLVT) / Skills Development Fund",
+    "tags": ["tvet_free_training"],
+    "url": "https://www.mlvt.gov.kh",
+    "note": "Government-funded free vocational training with monthly allowances, part of a national plan to train 1.5 million youth. Ask directly at your nearest public TVET institution (e.g. National Polytechnic Institute of Cambodia, National Technical Training Institute, or your provincial polytechnic institute)."
+  },
+  {
+    "id": "ahladang",
+    "name_km": "វេទិកា AHLADANG",
+    "name_en": "AHLADANG",
+    "org": "AHLADANG.com",
+    "tags": ["mentorship_general", "all_fields"],
+    "url": "https://ahladang.com",
+    "note": "A Cambodian platform offering scholarship listings, application tips, English learning guidance, and free mentorship for students, especially those in rural areas."
+  },
+  {
+    "id": "childs_dream_career",
+    "name_km": "កម្មវិធីរៀបចំផែនការអាជីព Child's Dream",
+    "name_en": "Career Planning Programme",
+    "org": "Child's Dream",
+    "tags": ["mentorship_general"],
+    "url": "https://childsdream.org",
+    "note": "In-school career readiness coaching and scholarship-application support, currently active in Siem Reap, Battambang, and Oddar Meanchey provinces."
+  }
+]

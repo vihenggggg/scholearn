@@ -1,0 +1,42 @@
+{
+  "scale": {
+    "min": 1,
+    "max": 5,
+    "labels_km": ["មិនយល់ស្របទាំងស្រុង", "មិនយល់ស្រប", "មធ្យម", "យល់ស្រប", "យល់ស្របទាំងស្រុង"],
+    "labels_en": ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]
+  },
+  "dimension_groups": {
+    "interest": ["R", "I", "A", "S", "E", "C"],
+    "strength": ["st_analytical", "st_communication", "st_leadership", "st_creativity", "st_technical", "st_care"],
+    "value": ["val_stability_growth", "val_local_abroad", "val_people_independent", "val_income_passion"]
+  },
+  "scoring_notes": "For each dimension, normalize every answer (1-5) to 0-1 via (answer-1)/4. If a question has reverse=true, use 1-normalized instead. For 'interest' and 'strength' dimensions, the student's dimension score = average of its questions' normalized values (0 to 1). For 'value' dimensions, remap normalized (0-1) to -1..1 via (normalized*2)-1, then average across that axis's questions to get a value in -1..1.",
+  "questions": [
+    { "id": "R1", "section": "interest", "dimension": "R", "reverse": false, "text_km": "ខ្ញុំចូលចិត្តធ្វើការជាមួយឧបករណ៍ គ្រឿងចក្រ ឬជួសជុលអ្វីៗ។", "text_en": "I enjoy working with tools, machines, or fixing things." },
+    { "id": "R2", "section": "interest", "dimension": "R", "reverse": false, "text_km": "ខ្ញុំចូលចិត្តធ្វើសកម្មភាពក្រៅផ្ទះ ឬការងារប្រើកម្លាំងកាយ ជាងអង្គុយធ្វើការនៅតុ។", "text_en": "I prefer outdoor or hands-on physical activity over sitting at a desk all day." },
+    { "id": "I1", "section": "interest", "dimension": "I", "reverse": false, "text_km": "ខ្ញុំចូលចិត្តដោះស្រាយបញ្ហា ល្បែងផ្គុំរូប ឬស្វែងយល់ពីរបៀបដែលអ្វីមួយដំណើរការ។", "text_en": "I enjoy solving problems, puzzles, or figuring out how things work." },
+    { "id": "I2", "section": "interest", "dimension": "I", "reverse": false, "text_km": "ខ្ញុំចូលចិត្តធ្វើការស្រាវជ្រាវ ពិសោធន៍ ឬវិភាគទិន្នន័យ។", "text_en": "I like doing research, experiments, or analyzing data." },
+    { "id": "A1", "section": "interest", "dimension": "A", "reverse": false, "text_km": "ខ្ញុំចូលចិត្តគូរគំនូរ រចនា សរសេរ ឬបង្កើតអ្វីៗតាមរបៀបផ្ទាល់ខ្លួន។", "text_en": "I enjoy drawing, designing, writing, or creating things in my own style." },
+    { "id": "A2", "section": "interest", "dimension": "A", "reverse": false, "text_km": "ខ្ញុំចូលចិត្តបញ្ចេញគំនិតរបស់ខ្ញុំតាមរយៈសិល្បៈ តន្ត្រី ឬការសម្តែង។", "text_en": "I like expressing my ideas through art, music, or performance." },
+    { "id": "S1", "section": "interest", "dimension": "S", "reverse": false, "text_km": "ខ្ញុំចូលចិត្តជួយ បង្រៀន ឬថែទាំអ្នកដទៃ។", "text_en": "I enjoy helping, teaching, or taking care of other people." },
+    { "id": "S2", "section": "interest", "dimension": "S", "reverse": false, "text_km": "ខ្ញុំចូលចិត្តធ្វើការជាក្រុម និងនិយាយជាមួយមនុស្សច្រើនប្រភេទ។", "text_en": "I like working in teams and talking with many different kinds of people." },
+    { "id": "E1", "section": "interest", "dimension": "E", "reverse": false, "text_km": "ខ្ញុំចូលចិត្តដឹកនាំក្រុម ចាប់ផ្តើមគម្រោងថ្មី ឬបញ្ចុះបញ្ចូលអ្នកដទៃ។", "text_en": "I enjoy leading a group, starting new projects, or persuading others." },
+    { "id": "E2", "section": "interest", "dimension": "E", "reverse": false, "text_km": "ខ្ញុំចូលចិត្តគំនិតបង្កើតអាជីវកម្មផ្ទាល់ខ្លួនថ្ងៃណាមួយ។", "text_en": "I like the idea of running my own business someday." },
+    { "id": "C1", "section": "interest", "dimension": "C", "reverse": false, "text_km": "ខ្ញុំចូលចិត្តរៀបចំព័ត៌មាន អនុវត្តតាមជំហានច្បាស់លាស់ ឬធ្វើការជាមួយចំនួន។", "text_en": "I like organizing information, following clear steps, or working with numbers." },
+    { "id": "C2", "section": "interest", "dimension": "C", "reverse": false, "text_km": "ខ្ញុំមានអារម្មណ៍ស្រួលនឹងការងារដែលត្រូវការភាពម៉ត់ចត់ និងធ្វើម្តងទៀតៗ។", "text_en": "I feel comfortable with detailed, careful, repeatable tasks." },
+    { "id": "ST1", "section": "strength", "dimension": "st_analytical", "reverse": false, "text_km": "ខ្ញុំអាចមើលបញ្ហាមួយ ហើយឆាប់រកឃើញដំណោះស្រាយប្រកបដោយតក្កវិជ្ជា។", "text_en": "I can look at a problem and quickly find a logical solution." },
+    { "id": "ST2", "section": "strength", "dimension": "st_communication", "reverse": false, "text_km": "ខ្ញុំអាចពន្យល់គំនិតឱ្យច្បាស់លាស់ ដើម្បីឱ្យអ្នកដទៃយល់បានយ៉ាងស្រួល។", "text_en": "I can explain ideas clearly so other people understand easily." },
+    { "id": "ST3", "section": "strength", "dimension": "st_leadership", "reverse": false, "text_km": "មនុស្សជុំវិញខ្ញុំច្រើនតែសុំឱ្យខ្ញុំសម្រេចចិត្ត ឬរៀបចំក្រុម។", "text_en": "People around me often ask me to make decisions or organize a group." },
+    { "id": "ST4", "section": "strength", "dimension": "st_creativity", "reverse": false, "text_km": "ខ្ញុំអាចបង្កើតគំនិតថ្មីៗ ឬដំណោះស្រាយចម្លែកដែលអ្នកដទៃមិនបានគិតដល់។", "text_en": "I can come up with new ideas or unusual solutions others haven't thought of." },
+    { "id": "ST5", "section": "strength", "dimension": "st_technical", "reverse": false, "text_km": "ខ្ញុំមានជំនាញប្រើដៃ — សំណង់ ជួសជុល ឬប្រើប្រាស់ឧបករណ៍។", "text_en": "I'm good with my hands — building, repairing, or handling equipment." },
+    { "id": "ST6", "section": "strength", "dimension": "st_care", "reverse": false, "text_km": "ខ្ញុំនៅតែស្ងប់ស្ងាត់ និងទន់ភ្លន់ នៅពេលអ្នកណាម្នាក់ត្រូវការការគាំទ្រផ្នែកអារម្មណ៍។", "text_en": "I stay calm and gentle when someone needs emotional support." },
+    { "id": "V1", "section": "value", "dimension": "val_stability_growth", "reverse": false, "text_km": "ខ្ញុំចង់ប្រថុយប្រថានជាមួយការងារដែលមានឱកាសធំនាពេលអនាគត ជាជាងជ្រើសរើសការងារដែលមានស្ថិរភាពប៉ុន្តែមានកម្រិត។", "text_en": "I'd rather take a chance on a job with bigger future opportunity than pick something safe but limited." },
+    { "id": "V2", "section": "value", "dimension": "val_stability_growth", "reverse": true, "text_km": "ការងារដែលមានស្ថិរភាព និងសុវត្ថិភាព សំខាន់ចំពោះខ្ញុំជាងឱកាសរីកចម្រើនលឿន។", "text_en": "A steady, secure job matters more to me than a chance to grow fast." },
+    { "id": "V3", "section": "value", "dimension": "val_local_abroad", "reverse": false, "text_km": "ខ្ញុំនឹងសប្បាយចិត្តផ្លាស់ទីទៅខេត្តផ្សេង ឬប្រទេសផ្សេង ប្រសិនបើមានឱកាសល្អ។", "text_en": "I'd be happy to move to another province or even another country for the right opportunity." },
+    { "id": "V4", "section": "value", "dimension": "val_local_abroad", "reverse": true, "text_km": "ខ្ញុំចង់រស់ និងធ្វើការនៅជិតគ្រួសារ និងស្រុកកំណើតរបស់ខ្ញុំ។", "text_en": "I prefer to live and work close to my family and hometown." },
+    { "id": "V5", "section": "value", "dimension": "val_people_independent", "reverse": false, "text_km": "ខ្ញុំចង់ធ្វើការតែម្នាក់ឯង ឬក្នុងបរិយាកាសស្ងប់ស្ងាត់តូច ជាជាងជុំវិញដោយមនុស្សពេញមួយថ្ងៃ។", "text_en": "I prefer working alone or in a small quiet setting rather than being surrounded by people all day." },
+    { "id": "V6", "section": "value", "dimension": "val_people_independent", "reverse": true, "text_km": "ខ្ញុំមានកម្លាំង នៅពេលព័ទ្ធជុំវិញដោយមនុស្ស និងទំនាក់ទំនងជានិច្ច។", "text_en": "I feel energized when I'm surrounded by people and constant interaction." },
+    { "id": "V7", "section": "value", "dimension": "val_income_passion", "reverse": false, "text_km": "ខ្ញុំនឹងជ្រើសរើសការងារដែលខ្ញុំស្រលាញ់ ទោះបីវាបានប្រាក់ខែតិចជាងការងារដែលខ្ញុំមិនចូលចិត្តក៏ដោយ។", "text_en": "I'd choose a job I love even if it pays less than a job I don't enjoy." },
+    { "id": "V8", "section": "value", "dimension": "val_income_passion", "reverse": true, "text_km": "ការរកប្រាក់ចំណូលបានច្រើន សំខាន់ចំពោះខ្ញុំជាងការធ្វើអ្វីដែលខ្ញុំស្រលាញ់។", "text_en": "Earning a good income matters more to me than doing what I love." }
+  ]
+}
