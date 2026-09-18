@@ -62,6 +62,12 @@ export default function Assessment({ answers, onAnswer, onComplete, onExit }) {
     <div className="mx-auto flex w-full max-w-2xl flex-1 flex-col px-4 py-8 sm:px-6 sm:py-12">
       <ProgressBar current={index + 1} total={total} sectionLabel={sectionLabel} />
 
+      {isFirst && (
+        <p className="animate-fade-slide-in mt-4 text-center text-sm font-medium text-emerald-700">
+          {t("assessmentIntroNote")}
+        </p>
+      )}
+
       <div className="relative mt-8 flex-1">
         {celebrate && (
           <div className="animate-celebrate-pop pointer-events-none absolute -top-4 left-1/2 z-10 -translate-x-1/2 -translate-y-full rounded-full bg-emerald-700 px-5 py-2 text-sm font-bold text-white shadow-lg">
