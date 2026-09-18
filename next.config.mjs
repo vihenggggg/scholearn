@@ -9,3 +9,8 @@ const nextConfig = {
 };
 
 export default nextConfig;
+
+// Makes `getCloudflareContext()` (used by app/api/submit-result) resolve
+// bindings/vars from .dev.vars when running the plain `next dev` server,
+// not just under `wrangler dev`.
+import("@opennextjs/cloudflare").then((m) => m.initOpenNextCloudflareForDev());

@@ -11,6 +11,7 @@ export default function AboutPage() {
     { title: t("aboutHowTitle"), body: t("aboutHowBody") },
     { title: t("aboutLimitTitle"), body: t("aboutLimitBody") },
     { title: t("aboutDataTitle"), body: t("aboutDataBody") },
+    { title: t("aboutPrivacyTitle"), body: t("aboutPrivacyBody") },
   ];
 
   return (

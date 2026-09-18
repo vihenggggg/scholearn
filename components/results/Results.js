@@ -1,21 +1,23 @@
 "use client";
 
-import { useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { useLanguage } from "@/lib/LanguageContext";
-import { computeStudentVector, rankCareers, topMatchDrivers } from "@/lib/scoring";
+import { computeStudentVector, rankCareers, topMatchDrivers, TOP_MATCH_COUNT } from "@/lib/scoring";
 import careersData from "@/data/careers.json";
 import ProfileSummary from "@/components/results/ProfileSummary";
 import CareerCard from "@/components/results/CareerCard";
 import PdfExportButton from "@/components/results/PdfExportButton";
+import PrintableBooklet from "@/components/results/PrintableBooklet";
 
-export default function Results({ answers, onRetake }) {
-  const { t } = useLanguage();
-  const printRef = useRef(null);
+export default function Results({ answers, demographics, onRetake }) {
+  const { t, lang } = useLanguage();
+  const bookletRef = useRef(null);
+  const hasSubmittedRef = useRef(false);
 
   const studentVector = useMemo(() => computeStudentVector(answers), [answers]);
 
   const matches = useMemo(() => {
-    const ranked = rankCareers(studentVector, careersData, 5);
+    const ranked = rankCareers(studentVector, careersData, TOP_MATCH_COUNT);
     return ranked.map(({ career, score }) => ({
       career,
       score,
@@ -23,9 +25,30 @@ export default function Results({ answers, onRetake }) {
     }));
   }, [studentVector]);
 
+  // Fire-and-forget anonymous analytics. Never blocks or breaks the results
+  // page — a failed/slow request here must not affect the student at all.
+  useEffect(() => {
+    if (hasSubmittedRef.current || !demographics) return;
+    hasSubmittedRef.current = true;
+
+    fetch("/api/submit-result", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        lang,
+        ageRange: demographics.ageRange,
+        gradeStatus: demographics.gradeStatus,
+        province: demographics.province,
+        dimensionVector: studentVector,
+        topMatches: matches.map((m) => ({ id: m.career.id, score: m.score })),
+      }),
+    }).catch(() => {});
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className="mx-auto w-full max-w-3xl flex-1 px-4 py-8 sm:px-6 sm:py-12">
-      <div ref={printRef} className="flex flex-col gap-6 bg-orange-50 p-1">
+      <div className="flex flex-col gap-6">
         <h1 className="text-center text-2xl font-extrabold text-slate-900 sm:text-3xl">
           {t("resultsHeading")}
         </h1>
@@ -44,8 +67,15 @@ export default function Results({ answers, onRetake }) {
         </div>
       </div>
 
+      <PrintableBooklet
+        pageRootRef={bookletRef}
+        studentVector={studentVector}
+        demographics={demographics}
+        matches={matches}
+      />
+
       <div className="no-print mt-8 flex flex-wrap items-center justify-center gap-4">
-        <PdfExportButton targetRef={printRef} />
+        <PdfExportButton bookletRef={bookletRef} />
         <button
           type="button"
           onClick={onRetake}

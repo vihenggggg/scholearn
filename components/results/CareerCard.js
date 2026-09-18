@@ -1,24 +1,8 @@
 "use client";
 
 import { useLanguage } from "@/lib/LanguageContext";
-import { dimensionLabel } from "@/lib/dimensions";
 import { matchedScholarships } from "@/lib/scholarships";
-
-function buildWhyFits(drivers, lang, t) {
-  if (!drivers.length) {
-    return lang === "km"
-      ? "ទម្រង់ចំណាប់អារម្មណ៍ និងចំណុចខ្លាំងរបស់អ្នកទំនងជិតនឹងជំនាញនេះជារួម។"
-      : "Your overall interest and strength profile is a close overall match for this field.";
-  }
-  const names = drivers.map((d) => dimensionLabel(d.dim, lang));
-  if (lang === "km") {
-    return `អ្នកមានពិន្ទុខ្ពស់លើ${names.join(" និង ")} ហើយជំនាញនេះក៏ត្រូវការចំណុចនោះដែរ។`;
-  }
-  if (names.length === 1) {
-    return `You scored high on ${names[0]}, and so does this field.`;
-  }
-  return `You scored high on ${names.join(" and ")}, and so does this field.`;
-}
+import { buildWhyFitsText } from "@/lib/matchExplanation";
 
 export default function CareerCard({ result, rank }) {
   const { t, lang } = useLanguage();
@@ -62,7 +46,7 @@ export default function CareerCard({ result, rank }) {
       </div>
 
       <p className="mt-4 rounded-2xl bg-emerald-50 p-4 text-sm font-medium leading-relaxed text-emerald-900">
-        💡 {buildWhyFits(drivers, lang, t)}
+        💡 {buildWhyFitsText(drivers, lang)}
       </p>
 
       <p className="mt-4 text-sm leading-relaxed text-slate-700">{description}</p>
