@@ -13,6 +13,8 @@ export default function Landing({ onStart }) {
 
   return (
     <div className="mx-auto flex w-full max-w-5xl flex-1 flex-col items-center px-4 py-10 sm:px-6 sm:py-16">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="/logo.png" alt={t("siteName")} className="mb-4 h-auto w-40 sm:w-48" />
       <span className="mb-4 rounded-full bg-emerald-100 px-4 py-1.5 text-sm font-semibold text-emerald-800">
         {t("heroKicker")}
       </span>

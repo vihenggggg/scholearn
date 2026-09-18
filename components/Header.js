@@ -9,11 +9,15 @@ export default function Header() {
   return (
     <header className="no-print sticky top-0 z-20 border-b border-orange-100 bg-orange-50/90 backdrop-blur">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 sm:px-6">
-        <Link href="/" className="flex items-center gap-2 font-bold text-lg text-emerald-800">
-          <span className="grid h-8 w-8 place-items-center rounded-full bg-emerald-700 text-white text-sm">
-            S
+        <Link href="/" className="flex items-center gap-2.5">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo-mark.png" alt="" className="h-9 w-9 shrink-0" />
+          <span className="flex flex-col leading-tight">
+            <span className="font-bold text-lg text-emerald-800">{t("siteName")}</span>
+            <span className="hidden text-[11px] font-medium text-slate-500 sm:block">
+              {t("siteTagline")}
+            </span>
           </span>
-          {t("siteName")}
         </Link>
         <nav className="flex items-center gap-3 sm:gap-5">
           <Link href="/about" className="text-sm font-medium text-slate-700 hover:text-emerald-800">

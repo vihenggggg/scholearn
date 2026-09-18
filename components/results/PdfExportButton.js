@@ -79,7 +79,7 @@ export default function PdfExportButton({ targetRef }) {
         }
       }
 
-      pdf.save("schoolearn-results.pdf");
+      pdf.save("tisdav-results.pdf");
     } finally {
       setLoading(false);
     }

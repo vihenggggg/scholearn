@@ -18,9 +18,9 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "Schoolearn — ស្វែងយល់ខ្លួនឯង ស្វែងរកជំនាញ",
+  title: "ទិសដៅ — ស្វែងយល់ខ្លួនឯង ស្វែងរកជំនាញ",
   description:
-    "Schoolearn helps Cambodian students discover which university majors or vocational paths fit them, and connects each match to real scholarship resources.",
+    "ទិសដៅ (Navigating Cambodians) helps Cambodian students discover which university majors or vocational paths fit them, and connects each match to real scholarship resources.",
 };
 
 export default function RootLayout({ children }) {
