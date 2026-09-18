@@ -14,178 +14,61 @@ import { matchedScholarships } from "@/lib/scholarships";
 
 const PAGE_STYLE = {
   width: "210mm",
-  minHeight: "297mm",
-  padding: "16mm 18mm",
+  height: "297mm",
+  padding: "14mm 16mm",
   boxSizing: "border-box",
   backgroundColor: "#fffaf3",
   display: "flex",
   flexDirection: "column",
+  overflow: "hidden",
 };
 
-function PageFooter({ pageLabel }) {
-  return (
-    <div
-      style={{
-        marginTop: "auto",
-        paddingTop: "8mm",
-        display: "flex",
-        justifyContent: "space-between",
-        fontSize: "9px",
-        color: "#94a3b8",
-        borderTop: "1px solid #fde3c7",
-      }}
-    >
-      <span>ទិសដៅ — Navigating Cambodians</span>
-      <span>{pageLabel}</span>
-    </div>
-  );
-}
-
-function CoverPage({ studentVector, demographics, lang, t, pageLabel }) {
-  const topInterests = topDimensions(studentVector, INTEREST_DIMENSIONS, 3);
-  const topStrengths = topDimensions(studentVector, STRENGTH_DIMENSIONS, 2);
-  const today = new Date().toLocaleDateString(lang === "km" ? "km-KH" : "en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-
-  return (
-    <div className="pdf-page" style={PAGE_STYLE}>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/logo.png" alt="" style={{ width: "42mm", height: "auto", margin: "0 auto 6mm" }} />
-
-      <h1 style={{ textAlign: "center", fontSize: "22px", fontWeight: 800, color: "#0f172a" }}>
-        {t("resultsHeading")}
-      </h1>
-      <p style={{ textAlign: "center", fontSize: "11px", color: "#64748b", marginTop: "2mm" }}>
-        {today}
-      </p>
-
-      <div
-        style={{
-          marginTop: "10mm",
-          padding: "8mm",
-          borderRadius: "6mm",
-          backgroundColor: "#ffffff",
-          border: "1px solid #fde3c7",
-        }}
-      >
-        <h2 style={{ fontSize: "15px", fontWeight: 800, color: "#0f172a", marginBottom: "5mm" }}>
-          {t("resultsProfileHeading")}
-        </h2>
-
-        <div style={{ marginBottom: "5mm" }}>
-          <h3
-            style={{
-              fontSize: "10px",
-              fontWeight: 700,
-              textTransform: "uppercase",
-              color: "#047857",
-              marginBottom: "2mm",
-            }}
-          >
-            {t("resultsInterestLabel")}
-          </h3>
-          <p style={{ fontSize: "12.5px", color: "#0f172a", fontWeight: 600 }}>
-            {topInterests.map((d) => dimensionLabel(d, lang)).join(lang === "km" ? "، " : ", ")}
-          </p>
-        </div>
-
-        <div style={{ marginBottom: "5mm" }}>
-          <h3
-            style={{
-              fontSize: "10px",
-              fontWeight: 700,
-              textTransform: "uppercase",
-              color: "#4338ca",
-              marginBottom: "2mm",
-            }}
-          >
-            {t("resultsStrengthLabel")}
-          </h3>
-          <p style={{ fontSize: "12.5px", color: "#0f172a", fontWeight: 600 }}>
-            {topStrengths.map((d) => dimensionLabel(d, lang)).join(lang === "km" ? "، " : ", ")}
-          </p>
-        </div>
-
-        <div>
-          <h3
-            style={{
-              fontSize: "10px",
-              fontWeight: 700,
-              textTransform: "uppercase",
-              color: "#b45309",
-              marginBottom: "2mm",
-            }}
-          >
-            {t("resultsValueLabel")}
-          </h3>
-          <p style={{ fontSize: "12.5px", color: "#334155", lineHeight: 1.6 }}>
-            {(lang === "km" ? "អ្នកឱ្យតម្លៃ " : "You lean toward ") +
-              VALUE_DIMENSIONS.map((dim) => describeValueScore(dim, studentVector[dim], lang)).join(
-                lang === "km" ? " និង " : ", "
-              ) +
-              (lang === "km" ? "។" : ".")}
-          </p>
-        </div>
-      </div>
-
-      {demographics && (
-        <p style={{ marginTop: "8mm", textAlign: "center", fontSize: "10px", color: "#94a3b8" }}>
-          {t("aboutIntro")}
-        </p>
-      )}
-
-      <PageFooter pageLabel={pageLabel} />
-    </div>
-  );
-}
-
-function CareerPage({ result, rank, lang, t, pageLabel }) {
+function CareerBlock({ result, rank }) {
+  const { t, lang } = useLanguage();
   const { career, score, drivers } = result;
-  const scholarships = matchedScholarships(career);
+  const scholarships = matchedScholarships(career, 2);
   const title = lang === "km" ? career.title_km : career.title_en;
   const subtitle = lang === "km" ? career.title_en : career.title_km;
   const description = lang === "km" ? career.description_km : career.description_en;
-  const dayInLife = lang === "km" ? career.day_in_life_km : career.day_in_life_en;
   const matchPct = Math.round(score * 100);
-
-  const sectionTitleStyle = {
-    fontSize: "10px",
-    fontWeight: 700,
-    textTransform: "uppercase",
-    color: "#94a3b8",
-    marginBottom: "1.5mm",
-    marginTop: "5mm",
-  };
-  const bodyTextStyle = { fontSize: "11.5px", color: "#334155", lineHeight: 1.6 };
+  const providersText = career.providers.slice(0, 3).join(lang === "km" ? "、 " : " · ");
+  const moreProviders = career.providers.length > 3 ? ` +${career.providers.length - 3}` : "";
 
   return (
-    <div className="pdf-page" style={PAGE_STYLE}>
+    <div
+      style={{
+        borderRadius: "3.5mm",
+        border: "1px solid #fde3c7",
+        backgroundColor: "#ffffff",
+        padding: "5mm 6mm",
+      }}
+    >
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-        <div>
+        <div style={{ minWidth: 0 }}>
           <span style={{ fontSize: "10px", fontWeight: 800, color: "#047857" }}>#{rank}</span>
-          <h2 style={{ fontSize: "19px", fontWeight: 800, color: "#0f172a" }}>{title}</h2>
-          <p style={{ fontSize: "11px", color: "#64748b" }}>{subtitle}</p>
+          <h3 style={{ fontSize: "16px", fontWeight: 800, color: "#0f172a", lineHeight: 1.2 }}>
+            {title}
+          </h3>
+          <p style={{ fontSize: "9.5px", color: "#64748b" }}>{subtitle}</p>
         </div>
         <span
           style={{
-            fontSize: "9px",
+            fontSize: "8.5px",
             fontWeight: 700,
-            padding: "1.5mm 3mm",
-            borderRadius: "10mm",
+            padding: "1.2mm 3mm",
+            borderRadius: "8mm",
             backgroundColor: career.category === "university" ? "#e0e7ff" : "#fef3c7",
             color: career.category === "university" ? "#3730a3" : "#92400e",
             whiteSpace: "nowrap",
+            flexShrink: 0,
           }}
         >
           {career.category === "university" ? t("categoryUniversity") : t("categoryTvet")}
         </span>
       </div>
 
-      <div style={{ marginTop: "4mm", display: "flex", alignItems: "center", gap: "3mm" }}>
-        <div style={{ flex: 1, height: "2.5mm", borderRadius: "2mm", backgroundColor: "#fde3c7" }}>
+      <div style={{ marginTop: "2.5mm", display: "flex", alignItems: "center", gap: "3mm" }}>
+        <div style={{ flex: 1, height: "2.2mm", borderRadius: "2mm", backgroundColor: "#fde3c7" }}>
           <div
             style={{
               width: `${matchPct}%`,
@@ -202,66 +85,55 @@ function CareerPage({ result, rank, lang, t, pageLabel }) {
 
       <p
         style={{
-          marginTop: "5mm",
-          padding: "4mm",
-          borderRadius: "3mm",
+          marginTop: "3mm",
+          padding: "2.5mm 3.5mm",
+          borderRadius: "2.5mm",
           backgroundColor: "#ecfdf5",
           color: "#065f46",
-          fontSize: "11.5px",
+          fontSize: "10px",
           fontWeight: 600,
-          lineHeight: 1.6,
+          lineHeight: 1.5,
         }}
       >
         💡 {buildWhyFitsText(drivers, lang)}
       </p>
 
-      <p style={{ ...bodyTextStyle, marginTop: "5mm" }}>{description}</p>
-
-      <h3 style={sectionTitleStyle}>{t("resultsDayInLife")}</h3>
-      <p style={bodyTextStyle}>{dayInLife}</p>
-
-      <h3 style={sectionTitleStyle}>{t("resultsProviders")}</h3>
-      <p style={bodyTextStyle}>{career.providers.join(lang === "km" ? "、 " : " · ")}</p>
-
-      <h3 style={sectionTitleStyle}>{t("resultsScholarships")}</h3>
-      {scholarships.length === 0 ? (
-        <p style={bodyTextStyle}>{t("resultsNoScholarships")}</p>
-      ) : (
-        <div style={{ display: "flex", flexDirection: "column", gap: "3mm" }}>
-          {scholarships.map((s) => (
-            <div
-              key={s.id}
-              style={{ padding: "3mm", borderRadius: "2.5mm", backgroundColor: "#fff8f0" }}
-            >
-              <p style={{ fontSize: "11px", fontWeight: 700, color: "#065f46" }}>
-                {lang === "km" ? s.name_km : s.name_en}
-              </p>
-              <p style={{ fontSize: "9.5px", fontWeight: 600, color: "#64748b" }}>{s.org}</p>
-              <p style={{ fontSize: "9.5px", color: "#475569", lineHeight: 1.5, marginTop: "1mm" }}>
-                {s.note}
-              </p>
-              <p style={{ fontSize: "9px", color: "#64748b", marginTop: "1mm" }}>{s.url}</p>
-            </div>
-          ))}
-        </div>
-      )}
-      <p style={{ fontSize: "9.5px", fontStyle: "italic", color: "#b45309", marginTop: "3mm" }}>
-        {t("resultsScholarshipsNote")}
+      <p style={{ marginTop: "2.5mm", fontSize: "9.5px", color: "#334155", lineHeight: 1.5 }}>
+        {description}
       </p>
 
-      <PageFooter pageLabel={pageLabel} />
+      <p style={{ marginTop: "2.5mm", fontSize: "9px", color: "#334155", lineHeight: 1.5 }}>
+        <span style={{ fontWeight: 700, color: "#94a3b8" }}>{t("resultsProviders")}: </span>
+        {providersText}
+        {moreProviders}
+      </p>
+
+      {scholarships.length > 0 && (
+        <p style={{ marginTop: "1mm", fontSize: "9px", color: "#334155", lineHeight: 1.5 }}>
+          <span style={{ fontWeight: 700, color: "#94a3b8" }}>{t("resultsScholarships")}: </span>
+          {scholarships
+            .map((s) => `${lang === "km" ? s.name_km : s.name_en} (${s.org})`)
+            .join("  •  ")}
+        </p>
+      )}
     </div>
   );
 }
 
 /**
- * Off-screen A4-sized pages rendered for html2canvas to capture one at a
- * time, so the downloaded PDF is a clean booklet (cover + one page per
- * match) instead of an arbitrary screenshot sliced across pages.
+ * Off-screen A4 page rendered for html2canvas to capture, so the downloaded
+ * PDF is a single compact take-home summary instead of a multi-page report.
  */
-export default function PrintableBooklet({ studentVector, demographics, matches, pageRootRef }) {
+export default function PrintableBooklet({ studentVector, matches, pageRootRef }) {
   const { t, lang } = useLanguage();
-  const totalPages = matches.length + 1;
+
+  const topInterests = topDimensions(studentVector, INTEREST_DIMENSIONS, 3);
+  const topStrengths = topDimensions(studentVector, STRENGTH_DIMENSIONS, 2);
+  const today = new Date().toLocaleDateString(lang === "km" ? "km-KH" : "en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 
   return (
     <div
@@ -269,23 +141,86 @@ export default function PrintableBooklet({ studentVector, demographics, matches,
       style={{ position: "fixed", left: "-99999px", top: 0, zIndex: -1 }}
       aria-hidden="true"
     >
-      <CoverPage
-        studentVector={studentVector}
-        demographics={demographics}
-        lang={lang}
-        t={t}
-        pageLabel={`1 / ${totalPages}`}
-      />
-      {matches.map((result, i) => (
-        <CareerPage
-          key={result.career.id}
-          result={result}
-          rank={i + 1}
-          lang={lang}
-          t={t}
-          pageLabel={`${i + 2} / ${totalPages}`}
-        />
-      ))}
+      <div className="pdf-page" style={PAGE_STYLE}>
+        {/* Header */}
+        <div style={{ display: "flex", alignItems: "center", gap: "4mm" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo-mark.png" alt="" style={{ width: "16mm", height: "16mm" }} />
+          <div style={{ flex: 1 }}>
+            <h1 style={{ fontSize: "19px", fontWeight: 800, color: "#0f172a", lineHeight: 1.1 }}>
+              {t("resultsHeading")}
+            </h1>
+            <p style={{ fontSize: "10px", color: "#94a3b8" }}>ទិសដៅ — Navigating Cambodians</p>
+          </div>
+          <span style={{ fontSize: "10px", color: "#94a3b8" }}>{today}</span>
+        </div>
+
+        {/* Profile summary */}
+        <div
+          style={{
+            marginTop: "5mm",
+            padding: "4mm 5mm",
+            borderRadius: "3mm",
+            backgroundColor: "#ffffff",
+            border: "1px solid #fde3c7",
+          }}
+        >
+          <h2
+            style={{
+              fontSize: "10px",
+              fontWeight: 700,
+              textTransform: "uppercase",
+              color: "#94a3b8",
+              marginBottom: "1.5mm",
+            }}
+          >
+            {t("resultsProfileHeading")}
+          </h2>
+          <p style={{ fontSize: "10px", lineHeight: 1.7, color: "#334155" }}>
+            <span style={{ fontWeight: 700, color: "#047857" }}>{t("resultsInterestLabel")}: </span>
+            <span style={{ fontWeight: 600, color: "#0f172a" }}>
+              {topInterests.map((d) => dimensionLabel(d, lang)).join(lang === "km" ? "、 " : ", ")}
+            </span>
+            <span style={{ margin: "0 2.5mm", color: "#fde3c7" }}>|</span>
+            <span style={{ fontWeight: 700, color: "#4338ca" }}>{t("resultsStrengthLabel")}: </span>
+            <span style={{ fontWeight: 600, color: "#0f172a" }}>
+              {topStrengths.map((d) => dimensionLabel(d, lang)).join(lang === "km" ? "、 " : ", ")}
+            </span>
+          </p>
+          <p style={{ marginTop: "1.5mm", fontSize: "10px", lineHeight: 1.7, color: "#334155" }}>
+            <span style={{ fontWeight: 700, color: "#b45309" }}>{t("resultsValueLabel")}: </span>
+            {VALUE_DIMENSIONS.map((dim) => describeValueScore(dim, studentVector[dim], lang)).join(
+              lang === "km" ? " • " : ", "
+            )}
+          </p>
+        </div>
+
+        {/* Matches heading */}
+        <h2 style={{ marginTop: "5mm", marginBottom: "3mm", fontSize: "13px", fontWeight: 800, color: "#0f172a" }}>
+          {t("resultsTopMatches")}
+        </h2>
+
+        {/* Career blocks */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "4mm" }}>
+          {matches.map((result, i) => (
+            <CareerBlock key={result.career.id} result={result} rank={i + 1} />
+          ))}
+        </div>
+
+        {/* Footer */}
+        <div
+          style={{
+            marginTop: "auto",
+            paddingTop: "4mm",
+            borderTop: "1px solid #fde3c7",
+            fontSize: "8px",
+            color: "#94a3b8",
+            lineHeight: 1.5,
+          }}
+        >
+          {t("resultsScholarshipsNote")}
+        </div>
+      </div>
     </div>
   );
 }

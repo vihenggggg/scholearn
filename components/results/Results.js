@@ -67,12 +67,7 @@ export default function Results({ answers, demographics, onRetake }) {
         </div>
       </div>
 
-      <PrintableBooklet
-        pageRootRef={bookletRef}
-        studentVector={studentVector}
-        demographics={demographics}
-        matches={matches}
-      />
+      <PrintableBooklet pageRootRef={bookletRef} studentVector={studentVector} matches={matches} />
 
       <div className="no-print mt-8 flex flex-wrap items-center justify-center gap-4">
         <PdfExportButton bookletRef={bookletRef} />
