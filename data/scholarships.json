@@ -9,6 +9,33 @@
     "note": "The Ministry announces thousands of full undergraduate scholarships every year (8,619 were announced for 2023-24). Check the Ministry's site or your school each year for the current announcement, eligibility, and deadline — the program changes annually so verify before relying on it."
   },
   {
+    "id": "techo_digital_scholarship",
+    "name_km": "អាហារូបករណ៍ទេពកោសល្យឌីជីថលតេជោ",
+    "name_en": "Techo Digital Talent Scholarship",
+    "org": "Ministry of Post and Telecommunications (MPTC)",
+    "tags": ["digital_tech_focused"],
+    "url": "https://cadt.edu.kh/scholarship/",
+    "note": "Government-funded full bachelor's scholarships (hundreds awarded for 2025-26) in digital fields — networking/telecommunications, computer science, cybersecurity, software engineering, AI, and digital business — at partner schools including CADT, ITC, RUPP, NUM, and AUPP. Requires passing a competitive exam (math, logic, English) plus an interview; students from disadvantaged backgrounds, remote areas, and female applicants are especially encouraged. Check mptc.gov.kh or cadt.edu.kh each year, since intake size and partner schools can change."
+  },
+  {
+    "id": "amt_scholarship",
+    "name_km": "អាហារូបករណ៍សមាគមសិស្ស-និស្សិត អ.ម.ត",
+    "name_en": "AMT Scholarship (Samdech Techo Hun Sen & Kittiprittbandit Scholarship Association)",
+    "org": "សមាគមសិស្ស-និស្សិតអាហារូបករណ៍ អ.ម.ត (AMT)",
+    "tags": ["national_general", "all_fields"],
+    "url": "https://www.facebook.com/iloveamt/",
+    "note": "Around 100 full scholarships awarded yearly to students who scored Grade A, B, or C on the national high school exam and come from low-income families, covering tuition at partner universities (e.g. AUPP). Apply through AMT directly (amt.scholarship.office@gmail.com, Telegram @AMTscholarships) or a partner university's admissions office — verify the current intake and partner schools each year."
+  },
+  {
+    "id": "maybank_scholarship",
+    "name_km": "កម្មវិធីអាហារូបករណ៍ធនាគារ Maybank កម្ពុជា",
+    "name_en": "Maybank Cambodia Scholarship Programme",
+    "org": "Maybank Cambodia",
+    "tags": ["business_focused", "digital_tech_focused"],
+    "url": "https://www.maybank2u.com.kh/en/about_us/Scholarship-Programme.page",
+    "note": "Full scholarship for 1st- or 2nd-year undergraduates studying business/banking-related or digital-related majors at selected Cambodian universities, for students with household income under roughly $24,000/year. Applications typically open once a year around March-April — check Maybank's site for the current cycle and deadline."
+  },
+  {
     "id": "asia_foundation_girls",
     "name_km": "កម្មវិធីអាហារូបករណ៍ថ្នាក់ឧត្តមសិក្សា សម្រាប់សិស្សស្រី",
     "name_en": "Cambodia Tertiary Scholarship Program (for young women)",

@@ -49,7 +49,7 @@
     "day_in_life_en": "A typical day involves writing code, debugging problems, and collaborating with a development team.",
     "dimension_vector": { "R": 0.3, "I": 0.9, "A": 0.4, "S": 0.2, "E": 0.4, "C": 0.5, "st_analytical": 0.9, "st_communication": 0.3, "st_leadership": 0.3, "st_creativity": 0.6, "st_technical": 0.7, "st_care": 0.1, "val_stability_growth": 0.4, "val_local_abroad": 0.3, "val_people_independent": 0.5, "val_income_passion": -0.3 },
     "providers": ["Royal University of Phnom Penh (RUPP)", "Institute of Technology of Cambodia (ITC)", "Norton University"],
-    "scholarship_tags": ["national_general", "postgraduate_abroad", "mentorship_general"]
+    "scholarship_tags": ["national_general", "postgraduate_abroad", "mentorship_general", "digital_tech_focused"]
   },
   {
     "id": "business_admin",
@@ -153,7 +153,7 @@
     "day_in_life_en": "A typical day includes designing circuits, testing systems, and troubleshooting technical faults.",
     "dimension_vector": { "R": 0.6, "I": 0.8, "A": 0.1, "S": 0.1, "E": 0.3, "C": 0.6, "st_analytical": 0.8, "st_communication": 0.3, "st_leadership": 0.4, "st_creativity": 0.3, "st_technical": 0.8, "st_care": 0.1, "val_stability_growth": 0.1, "val_local_abroad": 0.2, "val_people_independent": 0.3, "val_income_passion": -0.3 },
     "providers": ["Institute of Technology of Cambodia (ITC)"],
-    "scholarship_tags": ["national_general", "german_partner", "engineering_focused", "postgraduate_abroad", "mentorship_general"]
+    "scholarship_tags": ["national_general", "german_partner", "engineering_focused", "postgraduate_abroad", "mentorship_general", "digital_tech_focused"]
   },
   {
     "id": "architecture",
